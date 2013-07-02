@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>python-novaclient Slides</title>
+    <link rel="stylesheet" href="../css/reveal.min.css">
+    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="../lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--For code syntax highligting-->
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
+  </head>
+  <body>
+    <body>
+      <!-- Wrap the entire slide show in a div using the "reveal" class. -->
+      <div class="reveal">
+        <div class="slides">
+          <section>
+          <h1>python-novaclient</h1>
+          <h2>python bindings and CLI for Nova</h2>
+          <p>Joe Gordon</p>
+          </section>
+
+          <section>
+          <h1>About Me</h1>
+          <ul>
+          <li><img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> Developer @ HP</li>
+          <li>nova-core</li>
+          <li>hacking-core -- OpenStack style guide project</li>
+          <li>contact information</li>
+          <ul>
+          <li>joe.gordon@gmail.com</li>
+          <li>jog0 on freenode</li>
+          <li><a href="http://github.com/jogo">github.com/jogo</a></li>
+          <li><a href="http://launchpad.net/~jogo">launchpad.net/~jogo</a></li>
+          </ul>
+          </ul>
+          </section>
+
+
+
+
+          <section>
+          <section>
+          <h1>OpenStack Architecture</h1>
+          <img height=80% src="img/openstack-conceptual.jpg">
+          </section>
+          <section>
+          <h1>Nova</h1>
+          <p>Architecture Diagram</p>
+          <img height=70% src="img/nova-logical.jpg">
+          <img src="img/solinea.jpg">
+          </section>
+          </section>
+
+          <section>
+          <h1>Nova REST API</h1>
+          <h1>API for users to manage</h1>
+          <ul>
+          <li>instances</li>
+          <li>ip addresses</li>
+          <li>keypairs</li>
+          <li>networks</li>
+          <li>snapshots</li>
+          <li>admin APIs</li>
+          </ul>
+          </section>
+
+          <section>
+          <h1>python-novaclient</h1>
+          <p><a href="http://github.com/openstack/python-novaclient">github.com/openstack/python-novaclient</a></p>
+          <pre><code data-trim class="bash">
+pip install -U python-novaclient
+          </code></pre>
+          <p>CLI</p>
+          <p>Python Library</p>
+          </section>
+
+          <section>
+          <h1>Our Development Environment</h1>
+          <h2><a href="https://ca.enocloud.com">ca.enocloud.com</a></h2>
+          <img style="box-shadow: none; border: 0;" src="img/enocloud.png">
+          </section>
+
+          <section>
+          <section>
+          <h1>Booting a VM</h1>
+          <ul>
+          <li>CLI</li>
+          <li>Python Library</li>
+          </ul>
+          </section>
+          <section>
+          <h1>CLI</h1>
+          </br>
+          </br>
+          <pre><code data-trim class="bash">
+$ nova --debug boot --flavor=m1.tiny --image=cirros-0.3.1-x86_64-uec\
+--key-name=mykey myinstance
+          </code></pre>
+          </section>
+          <section>
+          <h2>Python Library</h2>
+          <pre><code data-trim style="max-height: 50%; font-size: 14px" class="python">
+import os
+import time
+from novaclient.v1_1 import client
+
+def get_nova_creds():
+    d = {}
+    d['username'] = os.environ['OS_USERNAME']
+    d['api_key'] = os.environ['OS_PASSWORD']
+    d['auth_url'] = os.environ['OS_AUTH_URL']
+    d['project_id'] = os.environ['OS_TENANT_NAME']
+    return d
+
+nova = client.Client(**get_nova_creds())
+if not nova.keypairs.findall(name="mykey"):
+    with open(os.path.expanduser('~/.ssh/id_rsa.pub')) as fpubkey:
+        nova.keypairs.create(name="mykey", public_key=fpubkey.read())
+image = nova.images.find(name="cirros")
+flavor = nova.flavors.find(name="m1.tiny")
+instance = nova.servers.create(name="test", image=image, flavor=flavor, key_name="mykey")
+
+# Poll at 5 second intervals, until the status is no longer 'BUILD'
+status = instance.status
+while status == 'BUILD':
+    time.sleep(5)
+    # Retrieve the instance again so the status field updates
+    instance = nova.servers.get(instance.id)
+    status = instance.status
+print "status: %s" % status
+          </code></pre>
+          </section>
+          </section>
+
+          <section>
+          <section>
+          <h1>Anatomy of nova boot</h1>
+          <h2>REST API calls</h2>
+          <h3>Simplified</h3>
+          <pre><code data-trim class="bash">
+$ nova --debug boot --flavor=m1.tiny --image=cirros-0.3.1-x86_64-uec\
+--key-name=mykey myinstance
+          </code></pre>
+          <!-- TODO How to make code block embedded in line? markdown?-->
+          <pre><code data-trim class="bash">
+POST http://$KEYSTONE_IP:5000/v2.0/tokens
+GET  http://$NOVA_IP:8774/v2/$UUID/images/detail
+GET  http://$NOVA_IP:8774/v2/$UUID/flavors/detail
+POST http://$NOVA_IP:8774/v2/$UUID/servers
+          </code></pre>
+          </section>
+         </section>
+
+          <section>
+          <h1>How to use the python-novaclient</h1>
+          <p>Before getting started, source your credentials</p>
+          <pre><code data-trim class="bash">
+OS_AUTH_URL=http://$KEYSTONE_IP:5000/v2.0
+OS_PASSWORD=password
+OS_TENANT_NAME=demo
+OS_USERNAME=demo
+          </code></pre>
+          </section>
+
+          <section>
+          <h1>Initialize a nova client</h1>
+          <pre><code data-trim class="python">
+#!/usr/bin/env python
+import os
+
+from novaclient.v1_1 import client
+
+def get_nova_creds():
+    d = {}
+    d['username'] = os.environ['OS_USERNAME']
+    d['api_key'] = os.environ['OS_PASSWORD']
+    d['auth_url'] = os.environ['OS_AUTH_URL']
+    d['project_id'] = os.environ['OS_TENANT_NAME']
+    return d
+
+nova = client.Client(**get_nova_creds())
+#Get token (optional, happens on its own if not specified)
+nova.authenticate()
+          </code></pre>
+          </section>
+
+          <section>
+          <h1>Loading a key pair</h1>
+          <p>To login into the instance with<p>
+          <pre><code data-trim class="python">
+if not nova.keypairs.findall(name="mykey"):
+    with open(os.path.expanduser('~/.ssh/id_rsa.pub')) as fpubkey:
+        nova.keypairs.create(name="mykey", public_key=fpubkey.read())
+print nova.keypairs.list()
+          </code></pre>
+          <!-- TODO provide alternate code to generate the key instead of just upload-->
+          </section>
+
+          <section>
+          <h1>Finding the flavor</h1>
+          <pre><code data-trim class="python">
+print nova.flavors.list()
+          </code></pre>
+          <pre><code data-trim class="python">
+flavor = nova.flavors.find(name="m1.tiny")
+          </code></pre>
+          </section>
+
+          <section>
+          <h1>Finding the image</h1>
+          <pre><code data-trim class="python">
+print nova.images.list()
+          </code></pre>
+          <pre><code data-trim class="python">
+flavor = nova.image.find(name="Exact-Image-name")
+          </code></pre>
+          </section>
+
+
+          <section>
+          <h1>Booting an instance</h1>
+          <pre><code data-trim class="python">
+image = nova.images.find(name="cirros")
+flavor = nova.flavors.find(name="m1.tiny")
+instance = nova.servers.create(name="test", image=image, flavor=flavor, key_name="mykey")
+          </code></pre>
+          </section>
+
+          <section>
+          <h1>Tracking the instance</h1>
+          <pre><code data-trim class="python">
+# Poll at 5 second intervals, until the status is no longer 'BUILD'
+status = instance.status
+while status == 'BUILD':
+    time.sleep(5)
+    # Retrieve the instance again so the status field updates
+    instance = nova.servers.get(instance.id)
+    status = instance.status
+print "status: %s" % status
+print "address: %s" % instance.addresses
+          </code></pre>
+          </section>
+          </section>
+
+          <section>
+          <h1>Destroying the instance</h1>
+          <pre><code data-trim class="python">
+instance.delete()
+          </code></pre>
+          </section>
+
+          <section>
+          <h1>Resources</h1>
+          <ul>
+          <li><a href="devstack.org">devstack</a></li>
+          <li><a href="http://github.com/openstack/python-novaclient">python-novaclient</a></li>
+          <li><a href="http://www.ibm.com/developerworks/cloud/library/cl-openstack-pythonapis/">IBM developer works</a></li>
+          </ul>
+          </p>
+          </section>
+
+          <section>
+          <h1>Thank You</h1>
+          <h2>Questions?</h2>
+          <p>Slides can be found at
+            <a href="http://jogo.github.io">jogo.github.io</a><p>
+          <p>Powered by
+            <a href="https://github.com/hakimel/reveal.js">reveal.js</a>
+          </p>
+          </section>
+
+
+        </div>
+      </div>
+      <script src="../lib/js/head.min.js"></script>
+      <script src="../js/reveal.min.js"></script>
+      <script>
+        // Required, even if empty.
+        Reveal.initialize({
+          dependencies: [
+          // Syntax highlight for <code> elements
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            ],
+            controls: true,
+            history: true,
+            //transition: 'linear',
+            theme: 'beige',
+            width: '95%',
+            height: '90%',
+            margin: 0.05,
+
+
+          });
+        </script>
+      </body>
+    </body>
+  </html>
