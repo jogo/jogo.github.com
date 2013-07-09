@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Very Large Development Slides</title>
+    <link rel="stylesheet" href="../css/reveal.min.css">
+    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="../lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--For code syntax highlighting-->
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
+  </head>
+  <body>
+    <body>
+      <!-- Wrap the entire slide show in a div using the "reveal" class. -->
+      <div class="reveal">
+        <div class="slides">
+          <section>
+          <h1>Very Large Development</h1>
+          <h2>How to run code review for<br> 800+ Open Source Python Developers</h2>
+          <p>Joe Gordon</p>
+          </section>
+
+          <section>
+          <h1>About Me</h1>
+          <ul>
+          <li><img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> Developer @ <img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/HP.svg"> </li>
+          <li>nova-core</li>
+          <li>hacking-core -- OpenStack style guide project</li>
+          <li>contact information</li>
+          <ul>
+          <li>joe.gordon@gmail.com</li>
+          <li>jog0 on freenode</li>
+          <li><a href="http://github.com/jogo">github.com/jogo</a></li>
+          <li><a href="http://launchpad.net/~jogo">launchpad.net/~jogo</a></li>
+          </ul>
+          </ul>
+          </section>
+
+          <section>
+          <h2>Very Large Development</h2>
+          <h4>As defined by ohloh</h4>
+          <blockquote cite="http://www.ohloh.net/p/openstack/factoids#FactoidTeamSizeVeryLarge">
+          &ldquo;
+Very large, active development team<br>
+Over the past twelve months, 889 developers contributed new code to OpenStack. <b>This is one of the largest open-source teams in the world, and is in the top 2% of all project teams on Ohloh</b>.<br>
+For this measurement, Ohloh considers only recent changes to the code. Over the entire history of the project, 1152 developers have contributed.&rdquo;
+          </blockquote>
+          </section>
+
+          <section>
+          <section>
+          <h1>What is <img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> ? <img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/python-logo.gif"></h1>
+          <p>
+          <img height=400 class="fragment" style="border: 0" src="img/openstack-lang-small.png">
+          </p>
+          </section>
+          <section>
+          <h1>What is <img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> ?</h1>
+          <h3>Second Largest Open Source <img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/python-logo.gif">project? </h3>
+          <h5>(That I know of)</h5>
+          <p><img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/pypy-logo.png"> is 911,676 lines of python code<br>and OpenStack is 628,039 </p>
+          </section>
+
+          <section>
+          <h2>APIS</h2>
+          <p><img style="box-shadow: none; border: 0" height=400 src="img/openstack-software-diagram.png"></p>
+          </section>
+
+          <section>
+          <h2>APIS</h2>
+          <p><img style="border: 0" height=550 src="img/openstack-conceptual.jpg"></p>
+          </section>
+          <section>
+          <h2>Architecture</h2>
+          <img style="border: 0" src="img/openstack-logical.jpg">
+          </section>
+          </section>
+
+          <section>
+          <section>
+          <h1>Who is OpenStack</h1>
+          </section>
+          <section data-background="img/foundation-members.png" data-background-size="75%">
+          </section>
+          <section data-background="img/openstack-users.png" data-background-size="75%">
+          </section>
+
+          </section>
+
+          <section>
+          <h2>Deployment scale</h2>
+          <h3>The Data center</h3>
+          <img height=550 style="border: 0" src="img/rackspace.jpg">
+          <p>(Rackspace data center)</p>
+          </section>
+
+          <section>
+          <section>
+          <h1>Development scale</h1>
+          </section>
+
+          <section>
+          <h1>By the Numbers</h1>
+          <img style="border: 0" src="img/activity.png">
+          <img style="border: 0" src="img/all-time-stats.png">
+          </section>
+          <section>
+          <h1>Graphs</h1>
+          <img style="border: 0; left:00%; margin-left: -300px" src="img/LOC-graph.png">
+          <img style="border: 0; right:00%; margin-right: -300px" src="img/contributors-per-month.png">
+          <p> In January 2011 <p>
+          <ul>
+          <li>61 Contributors</li>
+          <li>71,181 lines of code</li>
+         </ul>
+         </section>
+          </section>
+
+          <section>
+          <h1>Pros and Cons<br>of using <img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/python-logo.gif"></h1>
+          <p><b>Pros</b></p>
+          <ul>
+          <li>fast to develop</li>
+          <li>approachable language</li>
+          <li>'fun'</li>
+          </ul>
+          <p><b>Cons</b></p>
+          <ul>
+          <li>type checking</li>
+          <li>other static analysis</li>
+          <li>concurrency</li>
+          </ul>
+          </section>
+
+          <section>
+          <h1>Development Process</h1>
+          </section>
+
+          <section>
+          <h1>Life of a github Patch</h1>
+          <ol>
+          <li>Fork repo</li>
+          <li>Write code, test code and push to your github repo</li>
+          <li>Submit a pull request</li>
+          <li>Pach is reviewed</li>
+          <li>Patch is amended to address any negative comments</li>
+          <li>Code is merged</li>
+          <li>travis-ci runs on trunk <img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/travis-ci.png"></li>
+          </ol>
+          </section>
+
+          <section>
+          <h1>Where we started</h1>
+          <h2>Launchpad (bzr and all)</h2>
+          <img style="border: 0" src="img/launchpad.png">
+          </section>
+
+          <section>
+          <section>
+          <h1>Review Process Evolution</h1>
+          </section>
+
+          <section>
+          <h2>Gerrit</h2>
+          <img height=550 style="border: 0" src="img/gerrit.png">
+          </section>
+
+          <section>
+          <h2>Gate pep8 + unit tests</h2>
+          <img style="border: 0" src="img/gerrit-unittests.png">
+          </section>
+
+          <section>
+          <h2>Gate pep8 + py26, py27, integration tests</h2>
+          <img style="border: 0" src="img/gerrit-tox.png">
+          </section>
+
+          <section>
+          <img style="border: 0" src="img/gerrit-nocheck.png">
+          </section>
+
+
+          <section>
+          <h2>Gate + Check</h2>
+          <img style="border: 0" src="img/gerrit-check.png">
+          </section>
+
+          <section>
+          <h2>Current</h2>
+          <img style="border: 0" src="img/gerrit-current.png">
+          </section>
+
+
+
+         </section>
+
+         <section>
+          <h1>Life of an OpenStack Patch Today</h1>
+          <ol>
+          <li>Code is written and tested locally</li>
+          <li>Submitted for code review</li>
+          <li>Code is automatically tested on submission</li>
+          <li>Code is peer reviewed</li>
+          <li>Patch is amended to address any negative peer reviews</li>
+          <li>Code is approved (or rejected)</li>
+          <li>Code is re-tested as it will be merged</li>
+          <li>Code is merged</li>
+          </ol>
+          </section>
+
+          <section>
+          <h1>Today</h1>
+          </section>
+
+          <section>
+          <h1>Principles</h1>
+          <ul>
+          <li>Never break trunk</li>
+          <ul>
+          <li>Master branch is always green</li>
+          <li>Developers are never blocked on broken trunk</li>
+          </ul>
+          <li>Transparency</li>
+          <li>Automate everything</li>
+          <li>Egalitarian</li>
+          <li>Be Strict. Reduce burden on reviewers</li>
+          </ul>
+          </section>
+
+          <section>
+          <section>
+          <h1>Tools</h1>
+          <ul>
+          <li>Work Flow</li>
+          <li>Testing</li>
+          <li>Integration Testing</li>
+          <li>Communication</li>
+          </ul>
+          </section>
+
+          <section>
+          <h2>Work Flow</h2>
+          <ul>
+          <li>Gerrit</li>
+          <li>git-review</li>
+          <img style="border: 0" src="img/git-review.png">
+          <li>Jenkins</li>
+          </ul>
+          </section>
+
+          <section>
+          <h2>Testing</h2>
+          <ul>
+          <li>tox</li>
+          <li>testrepository</li>
+          <li>Automated code quality checks: flake8+pep8+pyflakes+hacking</li>
+          </ul>
+          </section>
+
+          <section>
+          <h2>Integration Testing</h2>
+          <ul>
+          <li>devstack</li>
+          <li>recheck</li>
+          <img style="border: 0" src="img/recheck.png">
+          <li>zuul</li>
+          </ul>
+          </section>
+
+          <section>
+          <h2>Communication</h2>
+          <ul>
+          <li>lauchpad</li>
+          <li>etherpad</li>
+          <li>irc</li>
+          <li>mailing list</li>
+          </ul>
+          </section>
+
+          <section>
+          <h2>Suggestions for other tools?</h2>
+          <p>clonedigger?</p>
+          </section>
+          </section>
+
+          <section>
+          <h1>Other ways we make development scale</h1>
+          <h2>Shrink Project Scope</h2>
+          <p>OpenStack started with just two projects - Nova and Swift.</p>
+          <p>Now the same functionality is spread out over 6 projects.</p>
+          <p>Nova, Swift, Glance, Keystone, Cinder, Neutron</p>
+          </section>
+
+          <section>
+          <h1>Thank You</h1>
+          <h2>Questions?</h2>
+          <!-- <p>Slides can be found at
+          <a href="http://jogo.github.io">jogo.github.io</a><p> -->
+        <p>Statistics from
+            <a href="https://www.ohloh.net/p/openstack">ohlo.net</a>
+          <p>Powered by
+            <a href="https://github.com/hakimel/reveal.js">reveal.js</a>
+          </p>
+          </section>
+
+        </div>
+      </div>
+      <script src="../lib/js/head.min.js"></script>
+      <script src="../js/reveal.min.js"></script>
+      <script>
+        // Required, even if empty.
+        Reveal.initialize({
+          dependencies: [
+          // Syntax highlight for <code> elements
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            ],
+            controls: false,
+            history: true,
+            //transition: 'linear',
+            theme: 'beige',
+            width: '90%',
+            height: '90%',
+            margin: 0.05,
+
+          });
+        </script>
+      </body>
+    </body>
+  </html>
