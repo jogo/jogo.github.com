@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>OpenStack on OpenStack: Deploying Openstack using OpenStack</title>
+    <link rel="stylesheet" href="../css/reveal.min.css">
+    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="../lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--For code syntax highlighting-->
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
+  </head>
+  <body>
+    <body>
+      <!-- Wrap the entire slide show in a div using the "reveal" class. -->
+      <div class="reveal">
+        <div class="slides">
+
+          <section>
+          <h1>TripleO: Openstack on Openstack</h1>
+          <!--TODO: Cross out ales and write openstack-->
+          <p>Joe Gordon</p>
+          </section>
+
+          <section>
+          <h1>About Me</h1>
+          <ul>
+            <li><img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> Developer @
+            <img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/HP.svg"></li>
+            <li>nova-core</li>
+            <li>TripleO</li>
+          </ul>
+          </section>
+
+          <section>
+          <section><h1><img src="img/openstack-logo-large.png"></h1></section>
+          <section><i><br><br><br><img src="img/openstack-software-diagram.png"></i></section>
+          <section>
+          <h3>Cloud enables Velocity</h3>
+          <ul>
+            <li>Fast resource allocation</li>
+            <li>Agility</li>
+            <li>Develop, Test and Deploy in Cloud</li>
+          </ul>
+          </section>
+          </section>
+
+
+          <section data-background-image="img/openstack-users.png" data-background-size="initial">
+          <!--Users-->
+          </section>
+
+          <section><h2>Lots of happy users...</h2>
+          <p><br></p>
+          <p data-fragment-index="0" class="visible">But...</p>
+          <p><br></p>
+          <p>It's hard to deploy and upgrade</p>
+          </section>
+
+          <section>
+          <h3>OpenStack is Complex!</h3>
+          <img src="img/openstack-logical.jpg">
+          </section>
+
+          <section>
+          <h1>wouldn't it be nice if...</h1>
+          <p>OpenStack was easier to deploy</p>
+          </section>
+
+          <section>
+          <h2><br></h2>
+          <h1>Introducing tripleo</h1>
+          <h2><br></h2>
+          <h2><i>OpenStack on Openstack</i></h2>
+          <h3><i>OpenStack's official Deploymant program </i></h3>
+          <p align="left"><br></p>
+          </section>
+
+
+          <section>
+          <section>
+          <h1>TripleO</h1>
+          <blockquote>
+            <p>"TripleO is the use of a self hosted OpenStack infrastructure - that is OpenStack bare metal (nova and cinder) + Heat + diskimage-builder + in-image orchestration such as Chef or Puppet - to install, maintain and upgrade itself."</p>
+          </blockquote>
+          </section>
+          <section>
+          <h1>TripleO</h1>
+          <h3>Issues we are trying to address</h3>
+          <ul>
+            <li>Bugs</li>
+            <ul>
+              <li>Continuous Integration and Delivery</li>
+              <li>Common API and codebase for the cloud and under the cloud</li>
+              <li>Standardize installation and upgrade process</li>
+            </ul>
+            <li>Entropy/Cruft -- Golden Images </li>
+            <li>Hardware Failure -- High Availability setup</li>
+          </ul>
+          </section>
+          </section>
+
+
+          <section>
+          <h2>Puzzle Pieces</h2>
+          <img src="img/deployment-steps.png">
+          </section>
+
+          <section>
+          <section><h2>Provisioning: Nova baremetal<br>
+          </h2>
+          <img style="height: 494px;" src="img/nova-baremetal.png"><br>
+          </section>
+
+          <section>
+          <h2>Software: Disk images</h2>
+          <h3>Golden Images</h3>
+          <ul>
+            <li>Encapsulate a known good set of software</li>
+            <li>Excludes configuration and persistent state</li>
+            <li>Equivalent of packages at the cluster level</li>
+            <li>Each image can be tested and deployed as-is</li>
+            <li>Small focused tool-chain to build images</li>
+          </ul>
+          </section>
+
+          <section><h2>configuration: os-apply-config</h2>
+          <p><br></p>
+          <p align="left">Combines metadata delivered to instance from cloud with templates shipped with image to produce usable configuration files.</p>
+          <p align="left"><br></p>
+          <p align="left">Small utility designed specifically to move Tripleo forward without tying reference implementation to specific configuration management solution.</p>
+          <p align="left"><br></p>
+          <p align="left">You can use chef/puppet/salt here instead if you prefer.<br></p>
+          <p align="left"><br></p>
+          <br>
+          </section>
+
+          <section><h2>state: os-refresh-config</h2>
+          <p><br></p>
+          <p align="center">Triggered when when metadata is updated: responsible for restarting services, coordinating data migration, and signalling completion to Heat.<br><br></p>
+          <h3 align="center">phases<br>
+          </h3>
+          <blockquote>
+            <p align="left"> pre-configure<br>configure<br>migration<br>post-configure<br></p>
+            <p align="left"><br></p>
+          </blockquote>
+          </section>
+
+          <section>
+          <h2>orchestration: heat</h2>
+          <ul>
+            <li>Supports any CM system within a machine</li>
+            <li>Delivers configuration metadata to machines</li>
+            <li><a href="https://github.com/openstack/tripleo-heat-templates">github.com/openstack/tripleo-heat-templates</a></li>
+          </ul>
+          <img src="img/heat.png">
+          </section>
+          </section>
+
+          <section>
+          <section>
+          <h2>Underclouds and Overclouds</h2>
+          <img src="img/under-over.png">
+          </section>
+          <section>
+          <h2>Undercloud</h2>
+          <ul>
+            <li>Fully HA baremetal cloud</li>
+            <li>Self hosted</li>
+            <li>Aiming for two control nodes</li>
+            <li>Additional nodes are for overcloud tenants</li>
+          </ul>
+          </section>
+          <section>
+          <h2>Overcloud</h2>
+          <ul>
+            <li>Fully HA KVM based OpenStack hosted by the undercloud</li>
+            <li>Orchestrated by Heat running in the undercloud</li>
+            <li>Can (optionally) use the same disk images for most service</li>
+          </ul>
+          </section>
+          <section>
+          <img src="img/tripleo-overview.png">
+          </section>
+          </section>
+
+
+
+          <section>
+          <h2>Installation<br></h2>
+          <!--TODO: Flesh out-->
+          <br><div align="left"><ol>
+              <li>Create a bootstrap node that is bridged to the datacenter network.</li>
+              <li>Enroll your machines.</li>
+              <li>Tell heat to deploy your HA OpenStack templates.</li>
+              <li>Heat drives the Nova API to scale out the cloud.</li>
+              <li>Switch off the bootstrap node.</li>
+              <li>Tell Heat to recover from the loss of the VM node</li>
+              <li>Deploy the overcloud as a undercloud tenant</li>
+          </ol></div>
+          <br>
+          </section>
+
+          <section><h2>managing your deployment</h2>
+          <div align="left">
+            <p><br></p>
+            <p align="center">When events occur that change our state, heat triggers will fire causing the system to respond appropriately.</p>
+            <p><br></p>
+            <p align="center">Rolling backwards becomes as simple as rolling forward: simply deploy the old image.</p>
+            <br><p align="center">
+            </p>
+            <p align="center">Prevent entropy by managing your cloud the cloud way:<br> Store data and persistent state in persistent volume.<br></p>
+          </div>
+          <p><br></p>
+          </section>
+
+          <section><h2>new possibilities and practical applications</h2>
+          <p><br></p>
+          <div align="left"><ul>
+              <li>Clouds in clouds: Multi-cloud tenancy.<br><br>
+              </li>
+              <li>
+
+              <p>
+              Integrate this as a part of  CI/CD infrastructure - deploy and test entire cloud in production-like environment on every commit.<br><br></p>
+              </li>
+              <li>More clouds for everyone!<br>
+              </li>
+          </ul></div>
+          </section>
+
+          <section>
+          <section>
+          <h2><br></h2>
+          <h2><br></h2>
+          <h2>Does this work today? <br>
+          </h2>
+          <p>What problems are left to solve?<br></p>
+          </section>
+          <section><h1>
+            <br>We can do this today!</h1>
+          <p><br></p>
+          <p><br></p>
+          <h1 class="fragment">and we do</h1>
+          </section>
+          <section>
+          <h1>just lacking polish</h1>
+          <p><br></p>
+          <div align="left"><ul>
+              <li>No persistent storage (Cinder) yet.</li>
+              <li>Rolling / canary updates in Heat.</li>
+              <li>Upgrade nova-compute without taking VMs down.</li>
+              <li>Rudimentary HA support</li>
+              <li>Robustness across OpenStack against: bugs, hardware failure, network failure, etc.<br>
+              </li>
+          </ul></div>
+          </section>
+          </section>
+
+
+
+          <section>
+          <h1>Thank You</h1>
+          <h2>Questions?</h2>
+          <p><a href="https://github.com/openstack/tripleo-incubator">github.com/openstack/tripleo-incubator</a></p>
+          <p><a href="https://wiki.openstack.org/wiki/TripleO">wiki.openstack.org/wiki/TripleO</a></p>
+          <p>#tripleo on freenode</p>
+          <p>Powered by
+          <a href="https://github.com/hakimel/reveal.js">reveal.js</a>
+          </p>
+          </section>
+
+        </div>
+      </div>
+
+
+      <script src="../lib/js/head.min.js"></script>
+      <script src="../js/reveal.min.js"></script>
+      <script>
+        // Required, even if empty.
+        Reveal.initialize({
+          dependencies: [
+          // Syntax highlight for <code> elements
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            ],
+            controls: true,
+            history: true,
+            //transition: 'linear',
+            theme: 'default',
+            //width: '95%',
+            //height: '90%',
+            margin: 0.05,
+
+
+          });
+        </script>
+      </body>
+    </body>
+  </html>
