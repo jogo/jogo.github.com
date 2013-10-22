@@ -20,7 +20,7 @@
         <div class="slides">
           <section>
           <h1>Very Large Development</h1>
-          <h2>How to run code review for<br> 800+ Open Source Python Developers</h2>
+          <h2>How to run code review for<br> 1000+ Open Source Developers</h2>
           <p>Joe Gordon</p>
           </section>
 
@@ -28,11 +28,9 @@
           <h1>About Me</h1>
           <ul>
           <li><img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> Developer @ <img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/HP.svg"> </li>
-          <li>nova-core</li>
-          <li>hacking-core -- OpenStack style guide project</li>
+          <li>Full time upstream OpenStack Developer</li>
           <li>contact information</li>
           <ul>
-          <li>joe.gordon@gmail.com</li>
           <li>jog0 on freenode</li>
           <li><a href="http://github.com/jogo">github.com/jogo</a></li>
           <li><a href="http://launchpad.net/~jogo">launchpad.net/~jogo</a></li>
@@ -42,12 +40,12 @@
 
           <section>
           <h2>Very Large Development</h2>
-          <h4>As defined by ohloh</h4>
+          <h4>As defined by ohloh by BLACK DUCK</h4>
           <blockquote cite="http://www.ohloh.net/p/openstack/factoids#FactoidTeamSizeVeryLarge">
           &ldquo;
 Very large, active development team<br>
-Over the past twelve months, 889 developers contributed new code to OpenStack. <b>This is one of the largest open-source teams in the world, and is in the top 2% of all project teams on Ohloh</b>.<br>
-For this measurement, Ohloh considers only recent changes to the code. Over the entire history of the project, 1152 developers have contributed.&rdquo;
+Over the past twelve months, 1241 developers contributed new code to OpenStack. <b>This is one of the largest open-source teams in the world, and is in the top 2% of all project teams on Ohloh</b>.<br>
+For this measurement, Ohloh considers only recent changes to the code. Over the entire history of the project, 1661 developers have contributed.&rdquo;
           </blockquote>
           </section>
 
@@ -60,9 +58,9 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           </section>
           <section>
           <h1>What is <img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> ?</h1>
-          <h3>Second Largest Open Source <img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/python-logo.gif">project? </h3>
+          <h3>Largest Open Source <img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/python-logo.gif">project? </h3>
           <h5>(That I know of)</h5>
-          <p><img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/pypy-logo.png"> is 911,676 lines of python code<br>and OpenStack is 628,039 </p>
+          <p><img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/pypy-logo.png"> is 881,970 lines of python code<br>and OpenStack is 968,893!</p>
           </section>
 
           <section>
@@ -94,7 +92,7 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           <section>
           <h2>Deployment scale</h2>
           <h3>The Data center</h3>
-          <img height=550 style="border: 0" src="img/rackspace.jpg">
+          <img height=500 style="border: 0" src="img/rackspace.jpg">
           <p>(Rackspace data center)</p>
           </section>
 
@@ -105,7 +103,8 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
 
           <section>
           <h1>By the Numbers</h1>
-          <img style="border: 0" src="img/activity.png">
+          <!-- http://www.ohloh.net/p/openstack -->
+          <img style="border: 0" src="img/activity.png"><br/>
           <img style="border: 0" src="img/all-time-stats.png">
           </section>
           <section>
@@ -141,12 +140,14 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           </section>
 
           <section>
-          <h1>Life of a github Patch</h1>
+          <h1>Life of a github Patch Today</h1>
           <ol>
           <li>Fork repo</li>
           <li>Write code, test code and push to your github repo</li>
           <li>Submit a pull request</li>
-          <li>Pach is reviewed</li>
+          <!--New as of May 2012 -->
+          <li>travis-ci tests patch</li>
+          <li>Patch is reviewed</li>
           <li>Patch is amended to address any negative comments</li>
           <li>Code is merged</li>
           <li>travis-ci runs on trunk <img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/travis-ci.png"></li>
@@ -156,6 +157,7 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           <section>
           <h1>Where we started</h1>
           <h2>Launchpad (bzr and all)</h2>
+          <h3>(3 years ago)</h3>
           <img style="border: 0" src="img/launchpad.png">
           </section>
 
@@ -258,6 +260,22 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           <li>tox</li>
           <li>testrepository</li>
           <li>Automated code quality checks: flake8+pep8+pyflakes+hacking</li>
+          <!--TODO add slides on code quality checks-->
+          </ul>
+          </section>
+
+          <section>
+          <h2>Testing</h2>
+          <h3>automated code quality checks</h3>
+          <ul>
+          <li>E1**  indentation</li>
+          <li>E2**  white space</li>
+          <li>E5**  line length</li>
+          <li>F401  module imported but unused</li>
+          <li>F821  undefined name name</li>
+          <li>H103  correct apache 2 license</li>
+          <li>H30*  import rules</li>
+          <li>H301  docstring should not start with a space</li>
           </ul>
           </section>
 
@@ -265,10 +283,22 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           <h2>Integration Testing</h2>
           <ul>
           <li>devstack</li>
+          <li>zuul</li>
           <li>recheck</li>
           <img style="border: 0" src="img/recheck.png">
-          <li>zuul</li>
+          <li>elastic-recheck</li>
           </ul>
+          </section>
+
+          <section>
+          <h2>Integration Testing</h2>
+          <h3>elastic-recheck</h3>
+          <ul>
+          <li>Measure integration tests in percent failure, not black and white</li>
+          <li>Hard to debug transient failures - 10s of MB of logs</li>
+          <li>Trivial to classify failures once have elastic search query</li>
+          </ul>
+          <img style="border: 0" src="img/elastic-recheck.png">
           </section>
 
           <section>
@@ -276,6 +306,7 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           <ul>
           <li>lauchpad</li>
           <li>etherpad</li>
+          <li>pastebin</li>
           <li>irc</li>
           <li>mailing list</li>
           </ul>
@@ -283,7 +314,6 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
 
           <section>
           <h2>Suggestions for other tools?</h2>
-          <p>clonedigger?</p>
           </section>
           </section>
 
@@ -322,8 +352,8 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
             history: true,
             //transition: 'linear',
             theme: 'beige',
-            width: '90%',
-            height: '90%',
+            //width: '90%',
+            //height: '90%',
             margin: 0.05,
 
           });
