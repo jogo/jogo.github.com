@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Diablo vs Havana</title>
+    <link rel="stylesheet" href="../css/reveal.min.css">
+    <link rel="stylesheet" href="../css/theme/default.css" id="theme">
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="../lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--For code syntax highlighting-->
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/print/pdf.css" type="text/css" media="print">
+  </head>
+  <body>
+    <body>
+      <!-- Wrap the entire slide show in a div using the "reveal" class. -->
+      <div class="reveal">
+        <div class="slides">
+          <section>
+          <h1>Diablo vs Havana</h1>
+          <h2>How OpenStack has Matured</h2>
+          <p>Joe Gordon</p>
+          </section>
+
+          <section>
+          <h1>About Me</h1>
+          <ul>
+            <li><img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/openstack-logo.png"> Developer @ <img height=150 style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" src="img/HP.svg"> </li>
+            <li>Full time upstream OpenStack developer</li>
+            <li>nova-core</li>
+            <li>ATC since Essex</li>
+            <li>Interested in making OpenStack scale and work</li>
+            <li>contact information</li>
+            <ul>
+              <li>jog0 on freenode</li>
+              <li><a href="http://github.com/jogo">github.com/jogo</a></li>
+              <li><a href="http://launchpad.net/~jogo">launchpad.net/~jogo</a></li>
+            </ul>
+          </ul>
+         </section>
+
+          <!--TODO: Add images-->
+
+          <section>
+          <section>
+          <h2>OpenStack from Diablo to Havana</h2>
+          <h3>a brief history of the integrated release</h3>
+          </section>
+
+          <section data-transition='fade' data-background-transition='fade'>
+          <!--TODO: Use some Ken Pepple images here-->
+          <h2>Diablo</h2>
+          <ul>
+            <li>Swift</li>
+            <li>Nova</li>
+            <ul>
+              <li>Nova-volume</li>
+              <li>Nova-network</li>
+              <li>Identity</li>
+            </ul>
+            <li>Glance</li>
+            <li>Keystone*</li>
+          </ul>
+          </section>
+
+          <section data-transition='fade' data-background-transition='fade'>
+          <h2>Essex</h2>
+          <ul>
+            <li>Swift</li>
+            <li>Nova</li>
+            <ul>
+              <li>Nova-volume</li>
+              <li>Nova-network</li>
+              <li><s>Identity</s></li>
+            </ul>
+            <li>Glance</li>
+            <li><b>Keystone</b></li>
+            <li><b>Horizon</b></li>
+          </ul>
+          </section>
+
+          <section data-transition='fade' data-background-transition='fade'>
+          <h2>Folsom</h2>
+          <ul>
+            <li>Swift</li>
+            <li>Nova</li>
+            <ul>
+              <li><s>Nova-volume</s></li>
+              <li><s>Nova-network</s></li>
+            </ul>
+            <li>Glance</li>
+            <li>Keystone</li>
+            <li>Horizon</li>
+            <li><b>Quantum (Neutron)</b></li>
+            <li><b>Cinder</b></li>
+          </ul>
+          </section>
+
+          <section data-transition='fade' data-background-transition='fade'>
+          <h2>Grizzly</h2>
+          <ul>
+            <li>Swift</li>
+            <li>Nova</li>
+            <ul>
+              <li><s>Nova-network</s></li>
+            </ul>
+            <li>Glance</li>
+            <li>Keystone</li>
+            <li>Horizon</li>
+            <li>Quantum (Neutron)</li>
+            <li>Cinder</li>
+          </ul>
+          </section>
+
+          <section data-transition='fade' data-background-transition='fade' data-background="img/grizzly.jpg" data-background-size="75%">
+          </section>
+
+
+
+          <section data-transition='fade' data-background-transition='fade'>
+          <h2>Havana</h2>
+          <ul>
+            <li>Swift (4)</li>
+            <li>Nova (6)</li>
+            <ul>
+              <li><s>Nova-network</s></li>
+            </ul>
+            <li>Glance (2)</li>
+            <li>Keystone (1)</li>
+            <li>Horizon (1)</li>
+            <li>Neutron (6)</li>
+            <li>Cinder (4)</li>
+            <li><b>Ceilometer</b> (4)</li>
+            <li><b>Heat</b> (4)</li>
+          </ul><br/>
+          Total number of OpenStack services: 32
+          </section>
+
+          <section data-transition='fade' data-background-transition='fade'>
+          <h2>Havana Features supported by Diablo</h2>
+          <ul>
+            <li>Swift</li>
+            <li>Nova</li>
+            <ul>
+              <li>Nova-network</li>
+            </ul>
+            <li>Glance</li>
+            <li>Keystone</li>
+            <li><s>Horizon</s></li>
+            <li><s>Neutron (Quantum)</s></li>
+            <li>Cinder</li>
+            <li><s>Ceilometer</s></li>
+            <li><s>Heat</s></li>
+          </ul>
+          </section>
+
+          <section data-transition='fade' data-background-transition='fade'>
+          <h2>Havana Features supported by Diablo</h2>
+          <ul>
+            <li>Swift</li>
+            <li>Nova</li>
+            <ul>
+              <li>Nova-network</li>
+            </ul>
+            <li>Glance</li>
+            <li>Keystone</li>
+            <li>Cinder</li>
+          </ul>
+          <br/>
+          </section>
+          </section>
+
+
+          <section data-markdown data-separator="---" data-notes="^Note:" data-vertical="===">
+          <script type="text/template">
+# OpenStack has Grown
+===
+## grown out
+### new services
+
+* Heat
+* Ceilometer
+* More in pipeline
+  * Icehouse
+    * Trove
+  * Incubation
+    * Ironic
+    * Marconi
+    * Savanna
+===
+## grown up
+Expand existing APIs
+
+* Split out projects
+* Extensions
+===
+## Diablo Nova Extensions
+<pre>
+| Hosts             | Host administration
+| Volumes           | Volumes support
+| Quotas            | Quotas management support
+| SimpleTenantUsage | Simple tenant usage extension
+| FlavorExtraData   | Provide additional data for flavors
+| SecurityGroups    | Security group support
+| FlavorExtraSpecs  | Instance type (flavor) extra specs
+| Createserverext   | Extended support to the Create Server v1.1 API
+| Multinic          | Multiple network support
+| VSAs              | Virtual Storage Arrays support
+| VolumeTypes       | Volume types support
+| Keypairs          | Keypair Support
+| Rescue            | Instance rescue mode
+| VirtualInterfaces | Virtual interface support
+| Floating_ips      | Floating IPs support
+</pre>
+note:
+Just 15
+===
+## Post Diablo Nova Extensions
+<pre style="margin-top: -1%;font-size:15px">
+ AdminActions                                           Agents
+ Aggregates                                             AssistedVolumeSnapshots
+ AttachInterfaces                                       AvailabilityZone
+ BareMetalExtStatus                                     BareMetalNodes
+ BlockDeviceMappingV2Boot                               CellCapacities
+ Cells                                                  Certificates
+ Cloudpipe                                              CloudpipeUpdate
+ ConfigDrive                                            ConsoleOutput
+ Consoles                                               Coverage
+ DeferredDelete                                         DiskConfig
+ Evacuate                                               ExtendedAvailabilityZone
+ ExtendedFloatingIps                                    ExtendedIps
+ ExtendedIpsMac                                         ExtendedQuotas
+ ExtendedServerAttributes                               ExtendedServices
+ ExtendedStatus                                         ExtendedVIFNet
+ ExtendedVolumes                                        FixedIPs
+ FlavorAccess                                           FlavorDisabled
+ FlavorManage                                           FlavorRxtx
+ FlavorSwap                                             FloatingIpDns
+ FloatingIpPools                                        FloatingIps
+ FloatingIpsBulk                                        Fping
+ HideServerAddresses                                    Hypervisors
+ ImageSize                                              InstanceActions
+ Migrations                                             MultipleCreate
+ NetworkAssociationSupport                              Networks
+ OSInstanceUsageAuditLog                                OSTenantNetworks
+ QuotaClasses                                           SchedulerHints
+ SecurityGroupDefaultRules                              ServerDiagnostics
+ ServerPassword                                         ServerStartStop
+ ServerUsage                                            Services
+ Shelve                                                 UsedLimits
+ UsedLimitsForAdmin                                     UserData
+ UserQuotas                                             VolumeAttachmentUpdate
+</pre>
+
+Note:
+add 66!
+---
+# So once we normalize for the growth in OpenStack what else have we done in the past four releases?
+===
+# Changes
+* Drivers
+* Testing and bugs
+* Performance and scalability
+* Forward facing internal changes
+* Process
+---
+## More drivers
+
+Nova: baremetal, docker, hyperv, powervm
+
+Cinder: coraid, emc, glusterfs, gpfs, nexenta, rbd, sheepdog, soldfire, ...
+---
+## Better Testing, fewer bugs
+
+* Unit tests
+* Integration tests (Tempest)
+* Lots of fixed bugs
+---
+## Unit Tests
+### percent unit tests by LOC
+
+Project | Diablo | Havana
+-- | -- | --
+Nova | 43% | 56%
+Glance | 62% | 62%
+Swift | 65% | 71%
+Keystone | 41% | 45%
+
+Note:
+Turns out we don't spend time just writting unit tests. We make sure that when new code has new unit tests, but percentege remained constant.
+---
+# Tempest
+## The OpenStack Integration Test Suite
+===
+## Diablo Tempest
+* Orignally named 'openstack-integration-tests'
+* Just 107 tests*
+  * extensions
+  * flavors
+  * floating ips
+  * image metadata
+  * images
+  * keypairs
+  * servers
+  * volumes
+* 2,655 lines of python code
+* First release of Tempest
+===
+## Havana Tempest
+
+* 1275* tests
+  * 1150 api tests
+    * compute, image, identity, network, object_storage, orchestration, volume
+    * 102 test files
+  * 92 cli tests
+  * 11 scenario tests
+  * 18 thirdparty (boto) tests
+  * 4 other
+* Parallel
+* 20-30 minutes to run in gate
+* 24,837 lines of python code
+===
+## Havana API tests
+
+* 785 compute
+* 216 identity
+* 24 image
+* 17 network
+* 50 object_storage
+* 54 volume
+
+===
+## Havana Tempest vs OpenStack Diablo
+
+* Same APIs as Diablo plus new ones
+* Diablo has been 'end of life'ed
+* Many tests cover new features.  Ignore those
+* Tempest not designed to be version independent
+* Got 622 tests to run and 154 (27%) to pass.*
+  * 110 of which were in compute
+===
+## Havana Tempest vs OpenStack Diablo Results
+
+* Diablo has poor parameter validation
+  * Invalid key names
+  * Min/max count for multiple creates
+* Changed return codes for negative cases
+  * Return empty list and 200 instead of 400 when invalid filter value in nova list servers
+  * We shouldn't have done this
+* Poor pagination in Diablo
+* JSON only tests in Diablo, Havana tests XML too
+* Many false negatives in results due to slight changes in now APIs and metadata are used
+Note:
+Takeaway: We have gotten much better at testing our APIs and making sure they work. Diablo has more broken APIs.
+---
+## Critical Bugs
+
+
+Project | Diablo | Essex | Folsom | Grizzly | Havana
+-- | -- | -- | -- | -- | --
+Nova     | 14 | 22 | 30 | 31 | 33
+Glance   |  5 | 15 | 30 | 13 |  8
+Keystone |    | 31 | 11 |  9 |  8
+Cinder   |    |    | 10 |  3 | 12
+Neutron  |    |    | 27 | 14 | 24
+<br/>
+
+* Categories
+  * Non-gated features
+  * Dependencies
+  * Race conditions
+  * Performance
+Note:
+Nova list of critical isn't very accurate, as projects grow harder to keep same meaning for critical. Multi-project bugs sometime don't get marked to the right project (human error).
+Overall number of bugs  fixed in nova has been the same across releases (800)
+Number of bugs seems to be a factor of length between releases.  Number isn't great because low priority bugs may not mean anything to a user.
+---
+# Performance and scalability
+---
+## Performance and scalability
+* Nova-scheduler
+  * Active-active
+  * No RPC fanout
+* DB
+  * Indices
+  * Smarter queries
+  * Fewer queries
+* service group
+  * Heartbeat to DB every 10 seconds
+  * 1k DB calls a second if have 10K nodes.
+  * Adjustable interval
+  * Alternatives memcache and zookeeper
+===
+## Performance and scalability
+* More efficient image work flow
+  * Glance, Nova, Cinder
+  * Move large files around less
+* PKI Tokens
+  * Fewer round trips to keystone
+Note:
+There has been a lot of work behind the scenes to make OpenStack work better, although there is always more work we have made significant progress.
+===
+## Performance and scalability
+### Case study from HP public cloud
+
+* Diablo
+  * 40,836 LOC changed to 239 files in nova
+  * 2,265 LOC to manage DB
+  * +100s of hours of DB tuning to make it work with more then just a few nodes
+* Havana
+  * DB just worked
+  * 1,167 LOC changed in 35 files
+  * Most of that is in patches in review today
+
+Thanks to Thom Leggett for these statistics
+---
+## Forward facing internal changes
+* Split out projects
+* Oslo
+* Road to live and continuous upgrades
+* Iterate on APIs
+---
+# Process
+Note:
+How has the process evolved
+===
+## Driving Principles
+
+* Never break trunk
+  * Master branch is always green
+  * Developers are never blocked
+* Transparency
+* Automate everything
+* Egalitarian
+* Be strict. Reduce burden on reviewers
+===
+## Diablo
+
+* Automated Gate
+* 87 Contributors in September 2011 (release of Diablo)
+* No Gate
+* No Git or Gerrit
+* Bzr and Launchpad
+===
+## Havana
+
+* 346 Contributors in October 2013 (release of Havana)
+  * Scale development process
+* Integrated Gate
+  * 9 Projects
+  * 30+ separate services
+  * 1 Merge pipeline
+* New tools for an asynchronous world
+  * Tests not pass fail, rather classified with a race percentage
+  * Fix that race condition we hit 0.5% of the time
+  * Debugging is hard
+  * elastic-recheck
+---
+## How will OpenStack keep maturing
+### What challenges are we facing today?
+* More testing
+* Live rolling upgrades
+* Limiting factor to the whole system is reviewers (and not just core)
+* Improving quality while growing the project as a whole
+* Scalability
+          </script>
+          </section>
+
+          <section>
+          <h1>Thank You</h1>
+          <h2>Questions?</h2>
+          <!-- <p>Slides can be found at
+          <a href="http://jogo.github.io">jogo.github.io</a><p> -->
+          <p>Powered by
+          <a href="https://github.com/hakimel/reveal.js">reveal.js</a>
+          </p>
+          </section>
+
+        </div>
+      </div>
+      <script src="../lib/js/head.min.js"></script>
+      <script src="../js/reveal.min.js"></script>
+      <script>
+        // Required, even if empty.
+        Reveal.initialize({
+          dependencies: [
+          // Interpret Markdown in <section> elements
+          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          // Syntax highlight for <code> elements
+            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            // Speaker notes
+            { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            ],
+            controls: true,
+            history: true,
+            transition: 'linear',
+            theme: 'beige',
+            width: '90%',
+            //height: '90%',
+            margin: 0.05,
+
+          });
+        </script>
+      </body>
+    </body>
+  </html>
