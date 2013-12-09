@@ -352,6 +352,8 @@ For this measurement, Ohloh considers only recent changes to the code. Over the 
           dependencies: [
           // Syntax highlight for <code> elements
             { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            // Speaker notes
+            { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
             ],
             controls: false,
             history: true,
