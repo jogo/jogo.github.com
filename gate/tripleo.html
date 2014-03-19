@@ -81,12 +81,9 @@ $("#graph-container").append($(new Image()).graphite({
     yMax: 100,
     yMin: 0,
     target: [
-        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron", "purple"),
-        graphite_moving_avg("gate", "gate-tempest-dsvm-full","orange"),
-        graphite_moving_avg("gate", "gate-grenade-dsvm","brown"),
-        graphite_moving_avg("gate", "gate-tempest-dsvm-large-ops","blue"),
-        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-large-ops","aqua"),
-        graphite_moving_avg("gate", "gate-tempest-dsvm-postgres-full","magenta")
+        graphite_moving_avg("check-tripleo", "check-tripleo-seed-precise", "purple"),
+        graphite_moving_avg("check-tripleo", "check-tripleo-undercloud-precise", "orange"),
+        graphite_moving_avg("check-tripleo", "check-tripleo-overcloud-precise", "brown"),
     ],
     title: "Gate Failure Rates"
 }));
@@ -103,12 +100,9 @@ $("#graph-container").append($(new Image()).graphite({
     fgcolor: '000000',
     hideGrid: true,
     target: [
-        graphite_hit_count("gate", "gate-tempest-dsvm-neutron", "purple"),
-        graphite_hit_count("gate", "gate-tempest-dsvm-full","orange"),
-        graphite_hit_count("gate", "gate-grenade-dsvm","brown"),
-        graphite_hit_count("gate", "gate-tempest-dsvm-large-ops","blue"),
-        graphite_hit_count("gate", "gate-tempest-dsvm-neutron-large-ops","aqua"),
-        graphite_hit_count("gate", "gate-tempest-dsvm-postgres-full","magenta")
+        graphite_hit_count("check-tripleo", "check-tripleo-seed-precise", "purple"),
+        graphite_hit_count("check-tripleo", "check-tripleo-undercloud-precise", "orange"),
+        graphite_hit_count("check-tripleo", "check-tripleo-overcloud-precise", "brown"),
     ],
     title: "Gate Hit Count"
 }));
