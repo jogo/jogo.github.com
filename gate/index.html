@@ -86,7 +86,8 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_moving_avg("gate", "gate-grenade-dsvm","brown"),
         graphite_moving_avg("gate", "gate-tempest-dsvm-large-ops","blue"),
         graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-large-ops","aqua"),
-        graphite_moving_avg("gate", "gate-tempest-dsvm-postgres-full","magenta")
+        graphite_moving_avg("gate", "gate-tempest-dsvm-postgres-full","magenta"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-heat-slow","green")
     ],
     title: "Gate Failure Rates"
 }));
@@ -108,7 +109,8 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_hit_count("gate", "gate-grenade-dsvm","brown"),
         graphite_hit_count("gate", "gate-tempest-dsvm-large-ops","blue"),
         graphite_hit_count("gate", "gate-tempest-dsvm-neutron-large-ops","aqua"),
-        graphite_hit_count("gate", "gate-tempest-dsvm-postgres-full","magenta")
+        graphite_hit_count("gate", "gate-tempest-dsvm-postgres-full","magenta"),
+        graphite_hit_count("gate", "gate-tempest-dsvm-neutron-heat-slow","green")
     ],
     title: "Gate Hit Count"
 }));
