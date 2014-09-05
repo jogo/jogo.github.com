@@ -12,8 +12,9 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
-function graphite_moving_avg(queue, job, color) {
-    var time = '5hours';
+function graphite_moving_avg(queue, job, color, time) {
+    time = time || "5hours";
+
     var graph = "color(alias(movingAverage(asPercent(";
     graph += "stats.zuul.pipeline." + queue +".job." + job + ".FAILURE,";
     graph += "sum(stats.zuul.pipeline." + queue + ".job." + job + ".{SUCCESS,FAILURE})";

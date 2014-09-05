@@ -92,7 +92,7 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_moving_avg("gate", "gate-devstack-dsvm-cells","darkgrey"),
         graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-full","darkred")
     ],
-    title: "Gate Failure Rates"
+    title: "Gate Failure Rates (36 hours)"
 }));
       </script>
     </div>
@@ -118,7 +118,7 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_hit_count("gate", "gate-devstack-dsvm-cells","darkgrey"),
         graphite_hit_count("gate", "gate-tempest-dsvm-neutron-full","darkred")
     ],
-    title: "Gate Hit Count"
+    title: "Gate Hit Count (36 hours)"
 }));
       </script>
     </div>
@@ -144,7 +144,7 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_moving_avg("gate", "gate-heat-python27","darkblue"),
         graphite_moving_avg("gate", "gate-trove-python27","darkgreen")
     ],
-    title: "Python27 Unit Test Gate Failure Rates"
+    title: "Python27 Unit Test Gate Failure Rates (36 hours)"
 }));
 $("#graph-container").append($(new Image()).graphite({
     from: "-36hours",
@@ -166,9 +166,38 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_moving_avg("gate", "gate-heat-python26","darkblue"),
         graphite_moving_avg("gate", "gate-trove-python26","darkgreen")
     ],
-    title: "Python26 Unit Test Gate Failure Rates"
+    title: "Python26 Unit Test Gate Failure Rates (36 hours)"
 }));
 
+      </script>
+    </div>
+
+
+    <div class="container" id="graph-container">
+      <script type="text/javascript">
+$("#graph-container").append($(new Image()).graphite({
+    from: "-10days",
+    url: "http://graphite.openstack.org/render/",
+    width: 1200,
+    height: 500,
+    bgcolor: 'ffffff',
+    fgcolor: '000000',
+    yMax: 100,
+    yMin: 0,
+    target: [
+        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron", "purple", "10hours"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-full","orange", "10hours"),
+        graphite_moving_avg("gate", "gate-grenade-dsvm","brown", "10hours"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-large-ops","blue", "10hours"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-large-ops","aqua", "10hours"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-postgres-full","magenta", "10hours"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-heat-slow","green", "10hours"),
+        graphite_moving_avg("gate", "gate-grenade-dsvm-partial-ncpu","darkblue", "10hours"),
+        graphite_moving_avg("gate", "gate-devstack-dsvm-cells","darkgrey", "10hours"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-full","darkred", "10hours")
+    ],
+    title: "Gate Failure Rates (10 days)"
+}));
       </script>
     </div>
 
