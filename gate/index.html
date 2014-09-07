@@ -81,7 +81,6 @@ $("#graph-container").append($(new Image()).graphite({
     yMax: 100,
     yMin: 0,
     target: [
-        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron", "purple"),
         graphite_moving_avg("gate", "gate-tempest-dsvm-full","orange"),
         graphite_moving_avg("gate", "gate-grenade-dsvm","brown"),
         graphite_moving_avg("gate", "gate-tempest-dsvm-large-ops","blue"),
@@ -107,7 +106,6 @@ $("#graph-container").append($(new Image()).graphite({
     fgcolor: '000000',
     hideGrid: true,
     target: [
-        graphite_hit_count("gate", "gate-tempest-dsvm-neutron", "purple"),
         graphite_hit_count("gate", "gate-tempest-dsvm-full","orange"),
         graphite_hit_count("gate", "gate-grenade-dsvm","brown"),
         graphite_hit_count("gate", "gate-tempest-dsvm-large-ops","blue"),
@@ -185,7 +183,6 @@ $("#graph-container").append($(new Image()).graphite({
     yMax: 100,
     yMin: 0,
     target: [
-        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron", "purple", "36hours"),
         graphite_moving_avg("gate", "gate-tempest-dsvm-full","orange", "36hours"),
         graphite_moving_avg("gate", "gate-grenade-dsvm","brown", "36hours"),
         graphite_moving_avg("gate", "gate-tempest-dsvm-large-ops","blue", "36hours"),
