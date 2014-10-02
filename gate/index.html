@@ -212,6 +212,7 @@ $("#graph-container").append($(new Image()).graphite({
     target: [
         graphite_moving_avg("check", "check-tempest-dsvm-full-icehouse","orange"),
         graphite_moving_avg("check", "check-grenade-dsvm-icehouse","brown"),
+        graphite_moving_avg("check", "check-tempest-dsvm-neutron-heat-slow-icehouse","green"),
         graphite_moving_avg("check", "check-tempest-dsvm-postgres-full-icehouse","magenta"),
         graphite_moving_avg("check", "check-tempest-dsvm-neutron-icehouse","darkred")
     ],
