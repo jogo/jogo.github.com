@@ -221,24 +221,6 @@ $("#graph-container").append($(new Image()).graphite({
       </script>
     </div>
 
-    <div class="container" id="graph-container">
-      <script type="text/javascript">
-$("#graph-container").append($(new Image()).graphite({
-    from: "-10days",
-    url: "http://graphite.openstack.org/render/",
-    width: 1200,
-    height: 500,
-    bgcolor: 'ffffff',
-    fgcolor: '000000',
-    yMax: 100,
-    yMin: 0,
-    target: [
-        graphite_moving_avg("check", "check-tempest-dsvm-docker","orange", "36hours"),
-    ],
-    title: "Docker Failure Rates (10 days)"
-}));
-      </script>
-    </div>
 
   </BODY>
 </html>
