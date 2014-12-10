@@ -144,29 +144,6 @@ $("#graph-container").append($(new Image()).graphite({
     ],
     title: "Python27 Unit Test Gate Failure Rates (36 hours)"
 }));
-$("#graph-container").append($(new Image()).graphite({
-    from: "-36hours",
-    url: "http://graphite.openstack.org/render/",
-    width: 800,
-    height: 500,
-    bgcolor: 'ffffff',
-    fgcolor: '000000',
-    yMax: 100,
-    yMin: 0,
-    target: [
-        graphite_moving_avg("gate", "gate-ceilometer-python26", "purple"),
-        graphite_moving_avg("gate", "gate-nova-python26","orange"),
-        graphite_moving_avg("gate", "gate-glance-python26","brown"),
-        graphite_moving_avg("gate", "gate-cinder-python26","blue"),
-        graphite_moving_avg("gate", "gate-neutron-python26","aqua"),
-        graphite_moving_avg("gate", "gate-swift-python26","magenta"),
-        graphite_moving_avg("gate", "gate-keystone-python26","green"),
-        graphite_moving_avg("gate", "gate-heat-python26","darkblue"),
-        graphite_moving_avg("gate", "gate-trove-python26","darkgreen")
-    ],
-    title: "Python26 Unit Test Gate Failure Rates (36 hours)"
-}));
-
       </script>
     </div>
 
@@ -197,30 +174,6 @@ $("#graph-container").append($(new Image()).graphite({
 }));
       </script>
     </div>
-
-    <div class="container" id="graph-container">
-      <script type="text/javascript">
-$("#graph-container").append($(new Image()).graphite({
-    from: "-36hours",
-    url: "http://graphite.openstack.org/render/",
-    width: 800,
-    height: 500,
-    bgcolor: 'ffffff',
-    fgcolor: '000000',
-    yMax: 100,
-    yMin: 0,
-    target: [
-        graphite_moving_avg("check", "check-tempest-dsvm-full-icehouse","orange"),
-        graphite_moving_avg("check", "check-grenade-dsvm-icehouse","brown"),
-        graphite_moving_avg("check", "check-tempest-dsvm-neutron-heat-slow-icehouse","green"),
-        graphite_moving_avg("check", "check-tempest-dsvm-postgres-full-icehouse","magenta"),
-        graphite_moving_avg("check", "check-tempest-dsvm-neutron-icehouse","darkred")
-    ],
-    title: "Stable/Icehouse check queue Failure Rates (36 hours)"
-}));
-      </script>
-    </div>
-
 
   </BODY>
 </html>
