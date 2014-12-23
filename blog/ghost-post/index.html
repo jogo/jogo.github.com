@@ -1,0 +1,156 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Starting a Blog</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=8b4f7b0f40">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="http://jogo.github.io/blog/ghost-post/">
+    
+    <meta property="og:site_name" content="Yet Another Silly Blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Starting a Blog">
+    <meta property="og:description" content="This blog is powered by Ghost via docker and hosted as static files using Github pages. Settings this up took just a few steps. Start Ghost  docker pull dockerfile/ghost  docker run -d -p 80:2368 -v &amp;lt;override-dir&amp;gt...">
+    <meta property="og:url" content="http://jogo.github.io/blog/ghost-post/">
+    <meta property="article:published_time" content="2014-12-12T03:59:12.543Z">
+    <meta property="article:modified_time" content="2014-12-23T02:27:16.665Z">
+    <meta property="article:tag" content="Getting Started">
+    <meta property="article:tag" content="Ghost">
+    <meta property="article:tag" content="Docker">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Starting a Blog">
+    <meta name="twitter:description" content="This blog is powered by Ghost via docker and hosted as static files using Github pages. Settings this up took just a few steps. Start Ghost  docker pull dockerfile/ghost  docker run -d -p 80:2368 -v &amp;lt;override-dir&amp;gt...">
+    <meta name="twitter:url" content="http://jogo.github.io/blog/ghost-post/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Yet Another Silly Blog",
+    "author": {
+        "@type": "Person",
+        "name": "Joe Gordon",
+        "image": "//www.gravatar.com/avatar/78b266fdb6c70808ea409c1e6bc6fd2a?d=404&s=250",
+        "url": "http://jogo.github.io/blog/author/joe",
+        "sameAs": null
+    },
+    "headline": "Starting a Blog",
+    "url": "http://jogo.github.io/blog/ghost-post/",
+    "datePublished": "2014-12-12T03:59:12.543Z",
+    "dateModified": "2014-12-23T02:27:16.665Z",
+    "keywords": "Getting Started, Ghost, Docker",
+    "description": "This blog is powered by Ghost via docker and hosted as static files using Github pages. Settings this up took just a few steps. Start Ghost  docker pull dockerfile/ghost  docker run -d -p 80:2368 -v &amp;lt;override-dir&amp;gt..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Yet Another Silly Blog" href="http://jogo.github.io/blog/rss/">
+</head>
+<body class="post-template tag-getting-started tag-ghost-tag tag-docker">
+
+    
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="http://jogo.github.io/blog">Home</a>
+        <a class="subscribe-button icon-feed" href="http://jogo.github.io/blog/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-getting-started tag-ghost-tag tag-docker">
+
+        <header class="post-header">
+            <h1 class="post-title">Starting a Blog</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2014-12-12">12 December 2014</time>  on <a href="../tag/getting-started/">Getting Started</a>, <a href="../tag/ghost-tag/">Ghost</a>, <a href="../tag/docker/">Docker</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>This blog is powered by <a href="http://ghost.org">Ghost</a> via <a href="https://dockerfile.github.io/#/ghost">docker</a> and hosted as static files using <a href="https://pages.github.com/">Github pages</a>.</p>
+
+<p>Settings this up took just a few steps.</p>
+
+<ol>
+<li><p>Start Ghost</p>
+
+<pre><code> docker pull dockerfile/ghost
+ docker run -d -p 80:2368 -v &lt;override-dir&gt;:/ghost-override dockerfile/ghost
+</code></pre></li>
+<li><p>Setup Ghost at <code>http://localhost/ghost</code></p></li>
+<li><p>Set blog URL via <a href="http://support.ghost.org/config/"><code>config.js</code></a> and restart ghost</p></li>
+<li><p>Convert the Ghost blog into static files using <a href="https://pypi.python.org/pypi/buster/0.1">buster</a></p>
+
+<pre><code>buster setup
+buster generate --domain &lt;localhost:80&gt;
+</code></pre></li>
+<li><p>Push files to github</p>
+
+<pre><code>git push
+</code></pre></li>
+</ol>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../author/joe/" style="background-image: url(http://www.gravatar.com/avatar/78b266fdb6c70808ea409c1e6bc6fd2a?d=404&amp;s=250)"><span class="hidden">Joe Gordon's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../author/joe/">Joe Gordon</a></h4>
+
+                    <p>Read <a href="../author/joe/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Starting%20a%20Blog&amp;url=http://jogo.github.io/blog/ghost-post/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://jogo.github.io/blog/ghost-post/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://jogo.github.io/blog/ghost-post/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+         <section class="copyright"><a href="http://jogo.github.io/blog">Yet Another Silly Blog</a> © 2014</section>
+         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+
+    <script src="../public/jquery.min.js?v=8b4f7b0f40"></script>
+
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=8b4f7b0f40"></script>
+    <script type="text/javascript" src="../assets/js/index.js?v=8b4f7b0f40"></script>
+
+</body>
