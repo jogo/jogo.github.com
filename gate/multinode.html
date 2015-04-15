@@ -2,7 +2,7 @@
       xmlns:py="http://genshi.edgewall.org/"
       lang="en">
   <HEAD>
-    <TITLE>Gate Graphite Stats</TITLE>
+    <TITLE>Check Graphite Stats</TITLE>
 
 <script type="text/javascript"
 	src="http://status.openstack.org/jquery.min.js"></script>
@@ -82,9 +82,9 @@ $("#graph-container").append($(new Image()).graphite({
     yMin: 0,
     target: [
         graphite_moving_avg("check", "check-tempest-dsvm-full","orange"),
-        graphite_moving_avg("check", "check-tempest-dsvm-aiopcpu-full","brown"),
+        graphite_moving_avg("check", "check-tempest-dsvm-multinode-full","brown"),
     ],
-    title: "Gate Failure Rates (36 hours)"
+    title: "Check Failure Rates (36 hours)"
 }));
       </script>
     </div>
@@ -100,9 +100,9 @@ $("#graph-container").append($(new Image()).graphite({
     hideGrid: true,
     target: [
         graphite_hit_count("check", "check-tempest-dsvm-full","orange"),
-        graphite_hit_count("check", "check-tempest-dsvm-aiopcpu-full","brown"),
+        graphite_hit_count("check", "check-tempest-dsvm-multinode-full","brown"),
     ],
-    title: "Gate Hit Count (36 hours)"
+    title: "Check Hit Count (36 hours)"
 }));
       </script>
     </div>
