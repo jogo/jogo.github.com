@@ -89,7 +89,8 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-heat-slow","green"),
         graphite_moving_avg("gate", "gate-grenade-dsvm-partial-ncpu","darkblue"),
         graphite_moving_avg("gate", "gate-devstack-dsvm-cells","darkgrey"),
-        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-full","darkred")
+        graphite_moving_avg("gate", "gate-tempest-dsvm-neutron-full","darkred"),
+        graphite_moving_avg("gate", "gate-tempest-dsvm-full-ceph","purple")
     ],
     title: "Gate Failure Rates (36 hours)"
 }));
@@ -114,7 +115,8 @@ $("#graph-container").append($(new Image()).graphite({
         graphite_hit_count("gate", "gate-tempest-dsvm-neutron-heat-slow","green"),
         graphite_hit_count("gate", "gate-grenade-dsvm-partial-ncpu","darkblue"),
         graphite_hit_count("gate", "gate-devstack-dsvm-cells","darkgrey"),
-        graphite_hit_count("gate", "gate-tempest-dsvm-neutron-full","darkred")
+        graphite_hit_count("gate", "gate-tempest-dsvm-neutron-full","darkred"),
+        graphite_hit_count("gate", "gate-tempest-dsvm-full-ceph","purple")
     ],
     title: "Gate Hit Count (36 hours)"
 }));
