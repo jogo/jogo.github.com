@@ -11,7 +11,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
         <link rel="stylesheet" href="../css/reveal.css">
-        <link rel="stylesheet" href="../css/theme/black.css" id="theme"> <!--options: black solarized serif -->
+        <link rel="stylesheet" href="../css/theme/black.css" id="theme"> <!-- other options can be loaded on the fly, see last slide -->
         <!-- Code syntax highlighting -->
         <link rel="stylesheet" href="../lib/css/zenburn.css">
         <!-- Printing and PDF exports -->
@@ -51,7 +51,20 @@ This is [markdown](https://help.github.com/articles/github-flavored-markdown).
 Slides can be found at [jogo.github.io](https://jogo.github.io)
 
 Powered by [reveal.js](https://github.com/hakimel/reveal.js)
+
+---
+
                     </script>
+                </section>
+
+                <section id="themes">
+                    <h2>Themes</h2>
+                    <ul>
+                        <li><a href="#" onclick="document.getElementById('theme').setAttribute('href','../css/theme/black.css'); return false;">Black (default)</a></li>
+                        <li><a href="#" onclick="document.getElementById('theme').setAttribute('href','../css/theme/white.css'); return false;">White</a></li>
+                        <li><a href="#" onclick="document.getElementById('theme').setAttribute('href','../css/theme/serif.css'); return false;">Serif</a></li>
+                        <li><a href="#" onclick="document.getElementById('theme').setAttribute('href','../css/theme/solarized.css'); return false;">Solarized</a></li>
+                    </ul>
                 </section>
 
             </div>
