@@ -197,8 +197,8 @@ All of them are building very different things. Differing degrees of cohesivenes
 
 ### Release
 
-* Over 300 separate releases
-* ASF is more of an umbrella and culture
+* 150+ separate releases
+* ASF is more of a governance umbrella and culture
 * Each project does its own thing
 
 ===
@@ -214,7 +214,6 @@ All of them are building very different things. Differing degrees of cohesivenes
     * OpenOffice had 31
 * flat (ish) trust model
 * 'Review then commit' vs. 'commit then review'
-*
 
 
 
@@ -232,8 +231,8 @@ All of them are building very different things. Differing degrees of cohesivenes
 1. ASF Member
 2. Project Management Committee
     * Makes technical decisions
-3. committer
-3. developer
+3. Committer
+3. Developer
 
 
     When the group felt that the person had "earned" the merit to be part of the
@@ -451,6 +450,7 @@ Flat as possible
 * Not controlled by single company
 * Lazy consensus
 * Decentralized design
+* Uniform tooling/process across projects
 
 
 ===
