@@ -28,10 +28,6 @@ Managing an open source project with a small handful of developers is easy. But 
 * Unusual development model
 * But how do other projects solve the same problems?
 
-<!--
-Why is there so little information on this?
-
--->
 ---
 
 # Why is Picking the Right Development Model Important?
@@ -86,8 +82,6 @@ source: [openhub](https://www.openhub.net)</small><br/>
 
 # Development Models
 
----
-
 ## Projects Covered
 
 * Linux Kernel
@@ -119,9 +113,6 @@ All of them are building very different things. Differing degrees of cohesivenes
 
 * Merge window (rate of 1,000 changes per day). After that next 6 - 10 weeks are mainly to changes that fix problems.
 
-* Produce a single 'thing', but almost never directly consumed by end users.
-  Lots and lots of completely isolated components (drivers)
-
 -->
 
 ===
@@ -132,11 +123,11 @@ All of them are building very different things. Differing degrees of cohesivenes
     * 1,000 contributors
     * 5,000 to 7,000 patches
 * Lieutenants / subsystem maintainers
-    * About 1,000 maintainers
+    * 100-150 maintainers
 * Chain of Trust
 * No elections for technical positions
 * Decentralized review process
-    * each maintainer has their own git tree
+    * Each maintainer has their own git tree
 * Only about 1% of patches are directly merged by BDFL
 
 
@@ -146,9 +137,9 @@ All of them are building very different things. Differing degrees of cohesivenes
 
 1. BDFL
 2. Subsystem maintainers
-3. Sub-subsystem maintainers
-4. Sub-sub-subsystem maintainers
 5. Contributors
+
+Usually one layer of subsystem maintainer but sometimes up to three
 
 ===
 
@@ -158,6 +149,7 @@ All of them are building very different things. Differing degrees of cohesivenes
     * mailing lists
 * Git
 * No automated pre-commit CI
+    * Yes post commit
 * Code review
     * decentralized
     * more mailing lists
@@ -171,6 +163,7 @@ All of them are building very different things. Differing degrees of cohesivenes
 1. Design
     * Prefer in the open, but not required
 2. Early review via mailing list
+    * Find correct maintainer
     * Submit patches via email
 3. Wider review, accepted  by a subsystem maintainer's tree and into the -next trees.
 4. Merged into mainline
@@ -185,6 +178,7 @@ All of them are building very different things. Differing degrees of cohesivenes
 * Corporate friendly
 * No single company controls
 * Not much automated pre commit testing
+    * Failing testing is very bad for author
 
 
 ---
@@ -197,9 +191,9 @@ All of them are building very different things. Differing degrees of cohesivenes
 
 ### Release
 
-* 150+ separate releases
 * ASF is more of a governance umbrella and culture
 * Each project does its own thing
+* 150+ separate releases
 
 ===
 
@@ -257,8 +251,8 @@ All of them are building very different things. Differing degrees of cohesivenes
 
 ### Life of a Patch
 
-* *Review then commit* or *commit then review*.
 * Different projects have different review flows
+* *Review then commit* or *commit then review*.
 * [Review Board](https://reviews.apache.org/r/)
 
 ===
@@ -317,7 +311,7 @@ Package Maintainers
 
 ### Hierarchy
 
-Roles:
+Roles
 
 * **Maintainer**: the person making the Debian package of the program.
 * **Sponsor**: a person who helps maintainers to upload packages to the official Debian package archive (after checking their contents).
@@ -527,7 +521,7 @@ Not followed
 1. BDFL
 2. Project Leader (day to day work)
 3. Core maintainers
-4. Subsystem Maintainers
+4. Subsystem maintainers
 5. Contributors
 
 ===
@@ -664,3 +658,20 @@ Slides can be found at [jogo.github.io](https://jogo.github.io)
 Powered by [reveal.js](https://github.com/hakimel/reveal.js)
 
 ---
+
+
+<!--
+TODO for next time.
+
+* Add more conclusions, less time on each project. More comparisons.
+* How I would describe each project in a nutshell
+* Conclusions
+    * Individual vs group
+    * Corporate
+    * All projects are consensus driven, just different models
+    * A few different 'trust' models
+        * How pre commit automated testing impacts things
+    * How they attract new developers
+    * Core vs maintainer, vs committer etc.
+
+-->
