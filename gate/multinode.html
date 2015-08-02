@@ -81,8 +81,8 @@ $("#graph-container").append($(new Image()).graphite({
     yMax: 100,
     yMin: 0,
     target: [
-        graphite_moving_avg("check", "check-tempest-dsvm-full","orange"),
-        graphite_moving_avg("check", "check-tempest-dsvm-multinode-full","brown"),
+        graphite_moving_avg("check", "gate-tempest-dsvm-full","orange"),
+        graphite_moving_avg("check", "gate-tempest-dsvm-multinode-full","brown"),
     ],
     title: "Check Failure Rates (36 hours)"
 }));
@@ -99,8 +99,8 @@ $("#graph-container").append($(new Image()).graphite({
     fgcolor: '000000',
     hideGrid: true,
     target: [
-        graphite_hit_count("check", "check-tempest-dsvm-full","orange"),
-        graphite_hit_count("check", "check-tempest-dsvm-multinode-full","brown"),
+        graphite_hit_count("check", "gate-tempest-dsvm-full","orange"),
+        graphite_hit_count("check", "gate-tempest-dsvm-multinode-full","brown"),
     ],
     title: "Check Hit Count (36 hours)"
 }));
