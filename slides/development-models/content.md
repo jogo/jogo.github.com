@@ -381,9 +381,11 @@ There is no one size fits all solution
 * Bug tracking
 * Review process
 * Testing
-* Overall workflow
-* DCO vs. CLA
 * Barrier to entry for new contributors
+  * DCO Developer vs. CLA
+    * Developer Certificate of Origin
+    * Contributor Licensing Agreement
+  * Overall workflow
 
 ---
 ## Development Model Components
@@ -397,10 +399,8 @@ There is no one size fits all solution
     * Rolling development
     * CI/CD
 * Number of artifacts
-* Decision making process
-  * Consensus model
+* Decision making process -- Consensus model
 * **Project culture**
-    * Individual vs group
 
 ---
 
