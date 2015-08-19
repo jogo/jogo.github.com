@@ -10,7 +10,9 @@ Managing an open source project with a small handful of developers is easy. But 
 
 
 <small>By Joe Gordon</small>
----
+
+<!--
+
 
 ## About Me
 
@@ -20,11 +22,13 @@ Managing an open source project with a small handful of developers is easy. But 
     * jogo on freenode
     *  [github.com/jogo](https://github.com/jogo)
 
+-->
+
 ---
 
 ## Why
 
-* Saw OpenStack grow from around 60 developers to 2,000 developers
+* Saw OpenStack grow from around 60 developers to over 2,100 developers
 * Unusual development model
 * But how do other projects solve the same problems?
 
@@ -36,11 +40,12 @@ Managing an open source project with a small handful of developers is easy. But 
 
 ## Accelerating Growth
 
-* Linux kernel
-    * 2 years to reach 100 contributors in 1991
+* Time till 100 contributors
+  * Linux: 1991 - 2 years
     * Linux 2.0 had 190 contributors in 1996  in credits
-* OpenStack took 1 year to reach 100 contributors in 2010
-* Docker had over 300 contributors in its first year in 2013
+  * OpenStack: 2010 - 1 year
+  * Docker: 2013 - several months
+    * over 300 contributors in its first year
 * 200 contributors per month
     * Linux: 1991 - June 2004 (13 years)
     * Debian: 1993 - March 2007 (14 years)
@@ -51,7 +56,7 @@ Managing an open source project with a small handful of developers is easy. But 
 
 ## Accelerating Growth
 
-<small>Linux, Debian,  Docker, OpenStack (clockwise from top left) <br/>
+<small>Linux, Debian, Docker, OpenStack (clockwise from top left) <br/>
 source: [openhub](https://www.openhub.net)</small><br/>
 <img height=250 src="images/linux-contributors-per-month.png">
 <img height=250 src="images/debian-contributors-per-month.png">
@@ -63,7 +68,7 @@ source: [openhub](https://www.openhub.net)</small><br/>
 
 ## Open Source is Big Business
 
-* Open source instead of standard bodies
+* Open source is the new standard bodies
 * Balancing corporate interests
 
 <img  src="images/linux-sponsors.png">
@@ -77,6 +82,16 @@ source: [openhub](https://www.openhub.net)</small><br/>
 
 >  organizations which design systems ... are constrained to produce designs which are copies of the communication structures of these organizations
 
+<!--
+
+At this point we should have painted a picture explaining that Large scale open source projects are:
+
+* are big business and on the rise
+* individual project are growing faster and faster
+
+And picking the right development model (and governance, but governance is outside the scope of this presentation)  can make or break a project
+
+-->
 
 ---
 
@@ -101,72 +116,13 @@ All of them are building very different things. Differing degrees of cohesivenes
 <img height=600 src="images/tux.png">
 ===
 
-### Release
+# [Linux Kernel](https://www.kernel.org/doc/Documentation/development-process/2.Process)
 
-* Time based release model (2-3 months)
-* Rolling development model, continually integrating major changes
-* Separate stable team
-* Release single artifact
-* Rarely consumed directly by end users
-
-<!--
-
-* Merge window (rate of 1,000 changes per day). After that next 6 - 10 weeks are mainly to changes that fix problems.
-
--->
-
-===
-
-### Scaling Model
-
-* Per month
-    * 1,000 contributors
-    * 5,000 to 7,000 patches
-* Lieutenants / subsystem maintainers
-    * 100-150 maintainers
-* Chain of Trust
-* No elections for technical positions
-* Decentralized review process
-    * Each maintainer has their own git tree
-* Only about 1% of patches are directly merged by BDFL
-
-
-===
-
-### Hierarchy
-
-1. BDFL
-2. Subsystem maintainers
-5. Contributors
-
-Usually one layer of subsystem maintainer but sometimes up to three
-
-===
-
-### Tooling
-
-* Communication
-    * mailing lists
-* Git
-* No automated pre-commit CI
-    * Yes post commit
-* Code review
-    * decentralized
-    * more mailing lists
-
-===
-
-### Life of a Patch
-
-*Process can be quick for minor fixes or take years for controversial changes*
-
-1. Design
-    * Prefer in the open, but not required
-2. Early review via mailing list
-    * Find correct maintainer
-    * Submit patches via email
-3. Wider review, accepted  by a subsystem maintainer's tree and into the -next trees.
-4. Merged into mainline
+* Time based release
+* 100-150 subsystem maintainers
+    * Chain of trust
+    * Decentralized review process
+* Rolling development model
 
 ===
 
@@ -189,23 +145,13 @@ Usually one layer of subsystem maintainer but sometimes up to three
 
 ===
 
-### Release
+# [Apache Software Foundation](https://www.apache.org/foundation/how-it-works.html)
+
 
 * ASF is more of a governance umbrella and culture
-* Each project does its own thing
-* 150+ separate releases
-
-===
-
-### Scaling Model
-
 * Separate projects
-    * 4,431 committers
+    * 4,400+ committers
     * 150+ top level projects
-* 740 contributors in past 12 months?
-* In project scaling up to each project
-    * Apache Spark had 570 contributors in past 12 months
-    * OpenOffice had 31
 * flat (ish) trust model
 * 'Review then commit' vs. 'commit then review'
 
@@ -216,44 +162,6 @@ Usually one layer of subsystem maintainer but sometimes up to three
     of its software, and is given a great deal of latitude in designing its own technical
     charter and its own governing rules.
 
-
-
-===
-
-### Hierarchy
-
-1. ASF Member
-2. Project Management Committee
-    * Makes technical decisions
-3. Committer
-3. Developer
-
-
-    When the group felt that the person had "earned" the merit to be part of the
-    development community, they granted direct access to the code repository, thus
-    increasing the group and increasing the ability of the group to develop the
-    program, and to maintain and develop it more effectively.
-===
-
-### Tooling
-
-* Communication
-    * mailing list
-* SVN
-* Optional CI
-* Central review system: [Review Board](https://reviews.apache.org/r/)
-* Lazy consensus
-
-
->    If it didn't happen on a mailing list, it didn't happen.
-
-===
-
-### Life of a Patch
-
-* Different projects have different review flows
-* *Review then commit* or *commit then review*.
-* [Review Board](https://reviews.apache.org/r/)
 
 ===
 
@@ -289,53 +197,11 @@ StevenK:
 
 ===
 
-### Release
+# Debian
 
-When its ready, not time based. Notoriously slow
+* When its ready, not time based. Notoriously slow
+* Package Maintainers: No review, trust maintainers more
 
-* Every 2 years
-* Lots and lots of artifacts
-* Unstable, Testing, Stable
-
-===
-
-### Scaling Model
-
-Package Maintainers
-
-* 3,200 Debian Developers
-* Can have individual maintainers or groups (via a mailing list)
-* No review, trust/burden maintainers more
-
-===
-
-### Hierarchy
-
-Roles
-
-* **Maintainer**: the person making the Debian package of the program.
-* **Sponsor**: a person who helps maintainers to upload packages to the official Debian package archive (after checking their contents).
-* **Debian Developer (DD)**: a member of the Debian project with full upload rights to the official Debian package archive.
-* **Debian Maintainer (DM)**: a person with limited upload rights to the official Debian package archive.
-
-
-===
-
-### Tooling
-
-* Communication
-    * Mailing list
-    * Web services
-    * Lots of IRC
-* Poor automated testing
-    * Quality control is ultimately to individual maintainers
-    * Half of the CI available isn't official
-* No peer review system
-    * Except for new packages (FTP Masters)
-
-===
-
-### Life of a Package
 
 <!--
 
@@ -344,7 +210,7 @@ Note:  Any Debian Developer can push a new version of a package but can cause tr
 
 -->
 
-<img height=650  src="images/debian-package-lifecycle.png">
+<img height=450  src="images/debian-package-lifecycle.png">
 
 ===
 
@@ -364,19 +230,26 @@ Note:  Any Debian Developer can push a new version of a package but can cause tr
 # OpenStack
 
 <img  src="images/openstack-logo.png">
-===
 
-### Release
-
-* Time based, every 6 months
-* Continuous delivery
-* Set of separate but related projects.
-    * Usually 1 way dependencies
-* Lots of artifacts
-* Sometimes consumed directly by consumers (without distro)
-* No rolling development, freeze development on master before a release
 
 ===
+
+# OpenStack
+
+* continuous delivery + stable releases
+  * No rolling development
+  <!-- freeze development on master before a release -->
+* Break down into services and build teams around each service
+    * 5,000 commits per month from 500 contributors
+* Strong centralized review process (two core reviews per patch)
+* Automated testing to reduce reviewer burden
+* Having trouble with scaling the team responsible for a single repository
+    *  Can't get past 15 or so members on a core team
+
+
+
+===
+
 <img  src="images/openstack-graph.png">
 
 <!--
@@ -387,52 +260,6 @@ Starting to evolve
 -->
 
 ===
-
-### Scaling Model
-
-* Break down repositories and build teams around each repository
-    * 31 teams
-    * 150+ repositories
-    * 5,000 commits per month from 500 contributors
-    * 282 core developers
-* Flat trust model
-* Strong centralized review process (two core reviews)
-* Automated testing to reduce reviewer burden
-* Having trouble with scaling the team responsible for a single repository
-    *  Can't get past 15 or so members on a core team
-
-
-===
-
-### Hierarchy
-
-Flat as possible
-
-1. TC
-2. PTL
-3. Core Teams
-
-===
-
-### Tooling
-
-* Communication
-    * Mailing lists
-    * IRC
-    * Code reviews
-* Git
-* Code review: [Gerrit](review.openstack.org)
-* Lots and lots of automated testing
-* In person design summits twice a year
-
-===
-
-### Life of a Patch
-
-<img  src="images/openstack-code-review.png">
-
-===
-
 
 ### Culture
 
@@ -479,23 +306,13 @@ Flat as possible
 
 ===
 
-### Release
+# [Docker](https://github.com/docker/docker/blob/master/MAINTAINERS)
 
-* Every 2 Months
-* separate release branch
-    * master isn't frozen
-
-===
-
-### Scaling Model
-
-* 37 maintainers in Docker
-* 10-15 repos in total
-* Maintainers / subsystem maintainers
-    * <small>Have to submit a pull request when going on vacation!</small>
-* No don't direct push
-* Centralized review in github
-
+* Release every 2 months from stable branch (master isn't frozen)
+* Scaling
+    * split into multiple repos
+    * Maintainers / subsystem maintainers
+    * 35+ maintainers in Docker
 
 
     1) They share responsibility in the project's success.
@@ -505,24 +322,6 @@ Flat as possible
 
     This "cellular division" is the primary mechanism for scaling maintenance of the
     project as it grows.
-
-<!--
-Not followed
-
-    A change requires LGTMs from an absolute majority of the maintainers of each
-    component affected.
-
--->
-
-===
-
-### Hierarchy
-
-1. BDFL
-2. Project Leader (day to day work)
-3. Core maintainers
-4. Subsystem maintainers
-5. Contributors
 
 ===
 
@@ -547,41 +346,6 @@ Not followed
 
 ===
 
-### Tooling
-
-* Communication
-    * IRC
-    * Google groups
-    * Pull request (all decisions are a pull request)
-* Git
-* Github
-* CI
-    * Jenkins
-    * Gate pull requests
-
-===
-
-### Life of a Patch
-
-5 States of a review
-
-1. Triage
-    * Check DCO etc.
-    * Partially automated
-2. Design review
-3. Code review
-4. Docs review
-5. Merge
-
-<small>Commit message bodies are optional!</small>
-
-===
-
-### Life of a Patch
-
-<img src="images/docker-workflow.png">
-===
-
 ### Culture
 
 * Embraces the BDFL
@@ -601,6 +365,8 @@ There is no one size fits all solution
 ---
 
 ## What Does *Open*  Even Mean?
+
+<!-- What type of open source project will this be -->
 
 * Open *Source*
 * Open *Core*
@@ -644,7 +410,8 @@ There is no one size fits all solution
 * Vision
 * Managing competing interests
 * Corporate
-* Ownership
+* Consensus model
+* Trust and Ownership
     * Team vs individual
     * First come first serve?
     * How do you fire someone?
@@ -661,10 +428,11 @@ Powered by [reveal.js](https://github.com/hakimel/reveal.js)
 
 
 <!--
-TODO for next time.
+for next time.
 
 * Add more conclusions, less time on each project. More comparisons.
-* How I would describe each project in a nutshell
+    * How I would describe each project in a nutshell
+    * Then go into comparisons on main points
 * Conclusions
     * Individual vs group
     * Corporate
