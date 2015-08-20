@@ -382,7 +382,7 @@ There is no one size fits all solution
 * Review process
 * Testing
 * Barrier to entry for new contributors
-  * DCO Developer vs. CLA
+  * DCO vs. CLA
     * Developer Certificate of Origin
     * Contributor Licensing Agreement
   * Overall workflow
@@ -420,7 +420,7 @@ There is no one size fits all solution
 
 # Thank You
 ### Questions?
-Slides can be found at [jogo.github.io](https://jogo.github.io)
+Slides can be found at [jogo.github.io/development-models](http://jogo.github.io/slides/development-models/)
 
 Powered by [reveal.js](https://github.com/hakimel/reveal.js)
 
