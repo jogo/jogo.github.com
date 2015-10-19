@@ -25,6 +25,11 @@ Managing an open source project with a small handful of developers is easy. But 
 -->
 
 ---
+<!-- -- data-background="#FFFFFF" -->
+
+<img style="margin-top: 0px; box-shadow: none; border: 0; vertical-align: middle" height=600 src="images/pinterest.png">
+
+---
 
 ## Why
 
